@@ -1,5 +1,4 @@
-// Device de teste para o curso Interfaces Modernas - Grupo All Electronics e VolcanLab's
-// Adquira o curso completo em https://bit.ly/34tesYJ
+// Device de teste para a interface desenvolvida
 // Gera um sinal harmônico na porta serial para teste da interface do curso
 
 const float F  = 0.2f; 	  // frequência da senoide
