@@ -1,18 +1,98 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <head>
+        <meta charset="UTF-8">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+        
+        <link href="html/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <link href="html/css/default.css" rel="stylesheet"                >
+        <link href="html/css/main.css" rel="stylesheet"                   >
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+        <script src="html/js/chartjs/chart.min.js"></script>
+
+        <title> Meu primeiro projeto com NodeJS, Electron, JavaScript e Bootstrap </title>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <img src="html/assets/imgs/lais.png">
+            <h3 class="text-center main-title"> Interface de Aquisição v1.0 </h3>
+          </div>
+          
+        <hr>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- coluna do menu lateral -->
+                <div class="col-sm-3">
+                    <button id="btn-new" class="btn btn-primary main-btn">Nova Aquisição</button>
+                    <button id="btn-save" class="btn btn-primary main-btn">Salvar Aquisição</button>
+                </div>
+                <!-- coluna do gráfico -->
+                <div class="col-sm-9">
+                    <canvas class="main-plot-1" id="main-plot-1" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-footer text-center">
+            Developed by Eng. Mateus Sousa @ 2021
+        </div>
+
+        <script>
+            window.onload = () =>
+            {
+                const canvas_1     = document.getElementById("main-plot-1");
+                const canvas_1_ctx = canvas_1.getContext('2d');
+                
+                const plot_1 = new Chart(canvas_1_ctx, 
+                {
+                    type: 'line',
+                    data:
+                    {
+                        labels: [],
+
+                        // Aqui é um vetor 
+                        // Cada objeto representa um conjunto de dados [0, 1, 2, ...]
+                        datasets: 
+                        [{
+                            label: 'Dados capturados',
+                            data: [],
+                            fill: false,
+                            borderColor: 'rgba(0, 120, 220, 0.8)',
+                            lineTension: 0.4,
+                            pointRadius: 0
+                        }] 
+                    }
+                });
+                
+                // Função global
+                window.add_plot_1_data = function(x, y)
+                {
+                    plot_1.data.labels.push(x);
+                    plot_1.data.datasets[0].data.push(y);
+
+                    /*if(plot_1.data.datasets[0].data.length === 500){
+                        plot_1.data.datasets[0].data.splice(0,1);
+                    }*/
+
+                    plot_1.update();
+                }
+
+                window.clear_plot_1 = function()
+                {
+                    plot_1.data.labels = [];
+                    plot_1.data.datasets[0].data = [];
+                }
+
+                window.fetch_plot_1_data = function()
+                {
+                    return plot_1.data.datasets[0].data;
+                }
+            }
+        </script>
+        <script src="serial-plot.js"></script>
+    </body>
 </html>

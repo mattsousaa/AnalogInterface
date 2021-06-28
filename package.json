@@ -1,12 +1,13 @@
 {
-  "name": "electron-quick-start",
+  "name": "projeto_curso",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Meu primeiro projeto em NodeJS, Electron, JavaScript e Bootstrap!",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "install": "electron-rebuild"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "",
   "keywords": [
     "Electron",
     "quick",
@@ -14,9 +15,13 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "Mateus Sousa",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^13.1.4"
+    "electron": "^13.1.4",
+    "electron-rebuild": "^2.3.5"
+  },
+  "dependencies": {
+    "serialport": "^9.2.0"
   }
 }

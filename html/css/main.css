@@ -1,0 +1,36 @@
+.main-title
+{
+    margin-top: 8px;
+}
+
+.main-btn
+{
+    width: 100%;
+    margin-top: 16px;
+}
+
+.main-footer
+{
+    position: fixed;
+
+    padding-top:    4px;
+    padding-bottom: 4px;
+
+    left: 0px;
+    bottom: 0px;
+
+    width: 100%;
+}
+
+.header img {
+    margin-left: 10px;
+    float: left;
+    width: 45px;
+    height: 45px;
+}
+  
+.header h1 {
+    position: relative;
+    top: 18px;
+    left: 10px;
+}
