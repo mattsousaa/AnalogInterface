@@ -4,21 +4,25 @@
         <meta charset="UTF-8">
         <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
         <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
-        
+
         <link href="html/css/bootstrap/bootstrap.min.css" rel="stylesheet">
         <link href="html/css/default.css" rel="stylesheet"                >
         <link href="html/css/main.css" rel="stylesheet"                   >
 
+        <script type="text/javascript" src="html/js/jquery-3.3.1.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+        <script src="html/js/popper.min.js"></script>
+        <script src="html/js/bootstrap.min.js"></script>
+
         <script src="html/js/chartjs/chart.min.js"></script>
 
-        <title> Meu primeiro projeto com NodeJS, Electron, JavaScript e Bootstrap </title>
+        <title> USB Serial Monitor </title>
 
     </head>
 
     <body>
         <div class="header">
             <img src="html/assets/imgs/lais.png">
-            <h3 class="text-center main-title"> Interface de Aquisição v1.0 </h3>
+            <h3 class="text-center main-title"> Interface de Aquisição v2.0 </h3>
           </div>
           
         <hr>
@@ -27,6 +31,27 @@
             <div class="row">
                 <!-- coluna do menu lateral -->
                 <div class="panel-menu col-sm-3">
+
+                    <div class="input-group mb-3 main-btn">
+                        <input type="text" id="porta-nome" class="form-control" placeholder="Porta Serial" aria-label="Porta Serial" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary" type="button" onclick="get_portaSerial()">Confirma</button>
+                        </div>
+                      </div>
+
+                    <div class="dropdown">
+                        <button id="btn-baudrate" class="btn btn-primary dropdown-toggle main-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Selecionar Baudrate
+                        </button>
+                        <div class="dropdown-menu adjust-itens" aria-labelledby="dropdownMenuButton">
+                          <a id="opt-btn1" class="dropdown-item" href="#">9600</a>
+                          <a id="opt-btn2" class="dropdown-item" href="#">19200</a>
+                          <a id="opt-btn3" class="dropdown-item" href="#">38400</a>
+                          <a id="opt-btn4" class="dropdown-item" href="#">57600</a>
+                          <a id="opt-btn5" class="dropdown-item" href="#">115200</a>
+                        </div>
+                    </div>   
+
                     <button id="btn-new" class="btn btn-primary main-btn">Nova Aquisição</button>
                     <button id="btn-save" class="btn btn-primary main-btn">Salvar Aquisição</button>
                 </div>
@@ -65,6 +90,9 @@
                             borderJoinStyle: 'round',
                             pointRadius: 0
                         }] 
+                    },
+                    options: {
+                        animation: false    // Deixa o plot mais rápido por desabilitar as animações 
                     }
                 });
                 
