@@ -85,18 +85,12 @@ void loop()
 
   //Serial.println(output);
 
-  StaticJsonBuffer<300> JSONbuffer;
-  JsonObject& JSONencoder = JSONbuffer.createObject();
+  String aux =  "{\"sensor\":\"eletromiografo (EMG)\",\"valor\": ";
+  aux.concat(output);
 
-  JSONencoder["sensor"] = "eletromiografo (EMG)";
-  JSONencoder["value"] = output;
-
-  char JSONmessageBuffer[100];
-  JSONencoder.printTo(JSONmessageBuffer, sizeof(JSONmessageBuffer));
-  Serial.println("Sending message to MQTT topic..");
-  Serial.println(JSONmessageBuffer);
-
-    if (! emg_sensor.publish(JSONmessageBuffer)) {
+  Serial.println(aux);
+  
+    if (! emg_sensor.publish(aux.c_str())) {
       Serial.println("Falha ao enviar o valor do sensor.");
     }
  
