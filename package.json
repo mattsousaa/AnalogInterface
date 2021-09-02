@@ -19,7 +19,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^13.1.4",
-    "electron-rebuild": "^2.3.5"
+    "electron-rebuild": "^3.2.3"
   },
   "dependencies": {
     "jquery": "^3.6.0",
