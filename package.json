@@ -18,7 +18,7 @@
   "author": "Mateus Sousa",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^13.1.4",
+    "electron": "^15.3.0",
     "electron-rebuild": "^2.3.5"
   },
   "dependencies": {
